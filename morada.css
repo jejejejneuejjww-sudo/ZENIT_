@@ -1137,54 +1137,36 @@
             z-index: 100; /* Asegúrate de que esté por encima de las flores */
             white-space: pre-wrap;
         }
-
-/* --- AJUSTE MAESTRO PARA CELULARES --- */
-@media (max-width: 600px) {
+/* --- AJUSTE DEFINITIVO: FLORES ABAJO, TEXTO ARRIBA --- */
+@media screen and (max-width: 600px) {
     
-    /* 1. Forzamos la aparición de las flores */
+    /* 1. Las flores se quedan atrás y abajo */
     .flowers {
         display: flex !important;
-        justify-content: center;
-        align-items: flex-end;
-        position: absolute;
-        bottom: 120px !important; /* Subimos el punto de origen */
+        position: absolute !important;
         left: 50% !important;
-        transform: translateX(-50%) scale(0.45) !important; /* Achicamos sin mover de lugar */
-        width: 100vw;
-        height: 50vh;
-        z-index: 5;
+        bottom: 0 !important; /* Pegadas al borde inferior del celular */
+        transform: translateX(-50%) scale(0.4) !important; /* Las achicamos para que no tapen todo */
+        transform-origin: bottom center !important;
+        z-index: 1 !important; /* Capa de atrás */
     }
 
-    /* 2. Ajustamos el contenedor del poema para que esté ARRIBA */
+    /* 2. El texto se queda adelante y arriba */
     .text-container {
-        width: 90% !important;
-        top: 8% !important; /* Lo fijamos en la parte superior */
+        position: absolute !important;
+        top: 40px !important; /* Lo separamos del borde de la cámara */
         left: 50% !important;
         transform: translateX(-50%) !important;
-        padding: 10px;
-        z-index: 100;
-        background: rgba(0, 0, 0, 0.3); /* Fondo sutil para leer */
-        border-radius: 10px;
+        width: 85% !important;
+        z-index: 10 !important; /* Capa de adelante */
+        background: rgba(0, 0, 0, 0.2); /* Fondo casi invisible para que no tape las flores */
+        pointer-events: none; /* Para que puedas hacer clic en las flores a través del texto */
     }
 
-    /* 3. El texto más compacto */
+    /* 3. Ajuste de tamaño de letra para móvil */
     #poem-text {
-        font-size: 0.85rem !important;
-        line-height: 1.3;
-        text-align: center;
-        white-space: normal; /* Evita que el texto se estire a los lados */
-    }
-
-    /* 4. Evitamos que el fondo se desplace */
-    body, html {
-        overflow: hidden !important;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-    }
-
-    /* 5. Ajuste para las luces flotantes (opcional, para que no saturen) */
-    .flower__light {
-        transform: scale(0.7);
+        font-size: 0.8rem !important;
+        line-height: 1.4 !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para que el texto resalte sobre las flores */
     }
 }
