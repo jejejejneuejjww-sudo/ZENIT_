@@ -1137,36 +1137,49 @@
             z-index: 100; /* Asegúrate de que esté por encima de las flores */
             white-space: pre-wrap;
         }
-/* --- AJUSTE DEFINITIVO: FLORES ABAJO, TEXTO ARRIBA --- */
+/* --- APARTADO COMPLETO PARA CELULARES --- */
 @media screen and (max-width: 600px) {
     
-    /* 1. Las flores se quedan atrás y abajo */
+    /* 1. POSICIÓN Y TAMAÑO DE LAS FLORES */
     .flowers {
         display: flex !important;
         position: absolute !important;
         left: 50% !important;
-        bottom: 0 !important; /* Pegadas al borde inferior del celular */
-        transform: translateX(-50%) scale(0.4) !important; /* Las achicamos para que no tapen todo */
+        
+        /* Subimos las flores al centro (ajusta este % si las quieres más arriba o abajo) */
+        bottom: 35% !important; 
+        
+        /* Achicamos las flores para que quepan en el ancho del celular */
+        transform: translateX(-50%) scale(0.35) !important; 
+        
         transform-origin: bottom center !important;
-        z-index: 1 !important; /* Capa de atrás */
+        z-index: 1 !important;
     }
 
-    /* 2. El texto se queda adelante y arriba */
+    /* 2. POSICIÓN DEL TEXTO (Encima de las flores o más arriba) */
     .text-container {
         position: absolute !important;
-        top: 40px !important; /* Lo separamos del borde de la cámara */
+        top: 40px !important; /* Lo mantenemos arriba para que no tape las flores en el centro */
         left: 50% !important;
         transform: translateX(-50%) !important;
-        width: 85% !important;
-        z-index: 10 !important; /* Capa de adelante */
-        background: rgba(0, 0, 0, 0.2); /* Fondo casi invisible para que no tape las flores */
-        pointer-events: none; /* Para que puedas hacer clic en las flores a través del texto */
+        width: 90% !important;
+        z-index: 10 !important;
+        pointer-events: none; /* Permite tocar las flores aunque el texto esté "encima" */
     }
 
-    /* 3. Ajuste de tamaño de letra para móvil */
+    /* 3. TAMAÑO DEL TEXTO PARA QUE NO ESTORBE */
     #poem-text {
         font-size: 0.8rem !important;
-        line-height: 1.4 !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra para que el texto resalte sobre las flores */
+        line-height: 1.3 !important;
+        text-align: center !important;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    /* 4. BLOQUEO DE MOVIMIENTO DE PANTALLA */
+    body, html {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
     }
 }
