@@ -1138,94 +1138,53 @@
             white-space: pre-wrap;
         }
 
-      /* --- AJUSTES ESPECÍFICOS PARA MORADA.HTML EN CELULARES --- */
-@media (max-width: 600px) {
-    /* 1. Reducimos el tamaño de todo el ramo de flores */
-    .flowers {
-        transform: scale(0.45); /* Achicamos las flores al 45% */
-        transform-origin: bottom center;
-        bottom: 50px; /* Las subimos un poco para que no las tape el borde */
-    }
-
-    /* 2. Ajustamos el contenedor del texto/poema */
-    .text-container {
-        width: 85%; /* Que no toque los bordes del celular */
-        top: 15%;   /* Lo bajamos un poco para que no choque con la parte superior */
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.4); /* Un fondo oscuro más notorio para leer mejor */
-        border-radius: 15px;
-        backdrop-filter: blur(5px); /* Efecto de vidrio esmerilado */
-    }
-
-    /* 3. El texto del poema debe ser más pequeño para que no cree scroll */
-    #poem-text {
-        font-size: 0.9rem !important; 
-        line-height: 1.3;
-        text-align: center;
-    }
-
-    /* 4. Ajustamos el botón de música para que no sea estorboso */
-    .music-control {
-        bottom: 20px;
-        right: 20px;
-        transform: scale(0.85);
-    }
-
-    /* 5. Aseguramos que el fondo no se mueva */
-    body {
-        overflow: hidden;
-        touch-action: none; /* Evita que el usuario mueva la pantalla por accidente */
-    }
-
-    /* 6. Si tienes la tarjeta (overlay) de "love-card" */
-    .love-card {
-        width: 90%;
-        padding: 20px;
-    }
-}
-
-/* --- ARREGLO PARA CELULARES (PANTALLAS PEQUEÑAS) --- */
+/* --- AJUSTE MAESTRO PARA CELULARES --- */
 @media (max-width: 600px) {
     
-    /* 1. Achicamos el ramo completo de flores */
+    /* 1. Forzamos la aparición de las flores */
     .flowers {
-        transform: scale(0.4); /* Ajusta a 0.35 si aún se ven muy grandes */
-        transform-origin: bottom center;
-        bottom: 50px; /* Las bajamos para que luzcan desde el suelo */
+        display: flex !important;
+        justify-content: center;
+        align-items: flex-end;
+        position: absolute;
+        bottom: 120px !important; /* Subimos el punto de origen */
+        left: 50% !important;
+        transform: translateX(-50%) scale(0.45) !important; /* Achicamos sin mover de lugar */
+        width: 100vw;
+        height: 50vh;
+        z-index: 5;
     }
 
-    /* 2. El contenedor del poema */
+    /* 2. Ajustamos el contenedor del poema para que esté ARRIBA */
     .text-container {
-        width: 85% !important; /* Que no toque los bordes laterales */
-        top: 10% !important;   /* Lo subimos un poco */
-        left: 50%;
-        transform: translateX(-50%); /* Lo centramos perfecto */
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro para leer mejor */
-        border-radius: 15px;
+        width: 90% !important;
+        top: 8% !important; /* Lo fijamos en la parte superior */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        padding: 10px;
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.3); /* Fondo sutil para leer */
+        border-radius: 10px;
     }
 
-    /* 3. El texto del poema */
+    /* 3. El texto más compacto */
     #poem-text {
-        font-size: 0.85rem !important; /* Letra más pequeña */
-        line-height: 1.4;
+        font-size: 0.85rem !important;
+        line-height: 1.3;
         text-align: center;
-        width: 100%;
+        white-space: normal; /* Evita que el texto se estire a los lados */
     }
 
-    /* 4. El control de música */
-    .music-control {
-        bottom: 15px;
-        right: 15px;
-        transform: scale(0.7); /* Lo hacemos más discreto */
-    }
-
-    /* 5. Evitamos que la pantalla se pueda mover de lado */
+    /* 4. Evitamos que el fondo se desplace */
     body, html {
-        overflow: hidden;
+        overflow: hidden !important;
         position: fixed;
         width: 100%;
         height: 100%;
     }
-}
 
+    /* 5. Ajuste para las luces flotantes (opcional, para que no saturen) */
+    .flower__light {
+        transform: scale(0.7);
+    }
+}
