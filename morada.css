@@ -1137,49 +1137,43 @@
             z-index: 100; /* Asegúrate de que esté por encima de las flores */
             white-space: pre-wrap;
         }
-/* --- APARTADO COMPLETO PARA CELULARES --- */
+
+
+
+
+/* --- ESTE ES EL CÓDIGO PARA EL CENTRO TOTAL --- */
 @media screen and (max-width: 600px) {
     
-    /* 1. POSICIÓN Y TAMAÑO DE LAS FLORES */
     .flowers {
         display: flex !important;
         position: absolute !important;
         left: 50% !important;
         
-        /* Subimos las flores al centro (ajusta este % si las quieres más arriba o abajo) */
-        bottom: 35% !important; 
+        /* SUBIR AL CENTRO: 45% o 50% es la mitad de la pantalla */
+        bottom: 45% !important; 
         
-        /* Achicamos las flores para que quepan en el ancho del celular */
-        transform: translateX(-50%) scale(0.35) !important; 
+        /* TAMAÑO: 0.6 es notablemente más grande que antes */
+        transform: translateX(-50%) scale(0.6) !important; 
         
         transform-origin: bottom center !important;
         z-index: 1 !important;
     }
 
-    /* 2. POSICIÓN DEL TEXTO (Encima de las flores o más arriba) */
     .text-container {
         position: absolute !important;
-        top: 40px !important; /* Lo mantenemos arriba para que no tape las flores en el centro */
+        /* Subimos el texto casi al borde para dejarle el centro a las flores */
+        top: 20px !important; 
         left: 50% !important;
         transform: translateX(-50%) !important;
         width: 90% !important;
         z-index: 10 !important;
-        pointer-events: none; /* Permite tocar las flores aunque el texto esté "encima" */
     }
 
-    /* 3. TAMAÑO DEL TEXTO PARA QUE NO ESTORBE */
     #poem-text {
         font-size: 0.8rem !important;
-        line-height: 1.3 !important;
-        text-align: center !important;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-    }
-
-    /* 4. BLOQUEO DE MOVIMIENTO DE PANTALLA */
-    body, html {
-        overflow: hidden !important;
-        position: fixed !important;
-        width: 100% !important;
-        height: 100% !important;
+        /* Añadimos un fondo oscuro más fuerte por si las flores quedan detrás */
+        background: rgba(0, 0, 0, 0.4);
+        padding: 10px;
+        border-radius: 10px;
     }
 }
