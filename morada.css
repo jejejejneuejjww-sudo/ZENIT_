@@ -1183,3 +1183,49 @@
         padding: 20px;
     }
 }
+
+/* --- ARREGLO PARA CELULARES (PANTALLAS PEQUEÑAS) --- */
+@media (max-width: 600px) {
+    
+    /* 1. Achicamos el ramo completo de flores */
+    .flowers {
+        transform: scale(0.4); /* Ajusta a 0.35 si aún se ven muy grandes */
+        transform-origin: bottom center;
+        bottom: 50px; /* Las bajamos para que luzcan desde el suelo */
+    }
+
+    /* 2. El contenedor del poema */
+    .text-container {
+        width: 85% !important; /* Que no toque los bordes laterales */
+        top: 10% !important;   /* Lo subimos un poco */
+        left: 50%;
+        transform: translateX(-50%); /* Lo centramos perfecto */
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro para leer mejor */
+        border-radius: 15px;
+    }
+
+    /* 3. El texto del poema */
+    #poem-text {
+        font-size: 0.85rem !important; /* Letra más pequeña */
+        line-height: 1.4;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* 4. El control de música */
+    .music-control {
+        bottom: 15px;
+        right: 15px;
+        transform: scale(0.7); /* Lo hacemos más discreto */
+    }
+
+    /* 5. Evitamos que la pantalla se pueda mover de lado */
+    body, html {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+}
+
